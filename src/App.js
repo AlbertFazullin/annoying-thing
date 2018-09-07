@@ -3,6 +3,7 @@ import './App.css';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import BsodScreen from './bsodScreen'
 
 const styles = {
   root: {
@@ -15,10 +16,11 @@ class App extends Component {
 
   state = {
     completed: 0,
+    bsod: false,
   };
-  
+
   componentDidMount() {
-    this.timer = setInterval(this.progress, 500);
+    this.timer = setInterval(this.progress, 1000);
   }
 
   componentWillUnmount() {
@@ -27,19 +29,25 @@ class App extends Component {
 
   progress = () => {
     const { completed } = this.state;
-    if (completed === 100) {
-      this.setState({ completed: 0 });
+    if (completed > 99.5) {
+      this.setState({ completed: 0, bsod: true });
     } else {
-      const diff = Math.random() * 10;
+      const step = (100 - completed) / 100;
+      const diff = (Math.random() * 3 + 7) * step;
       this.setState({ completed: Math.min(completed + diff, 100) });
     }
   };
 
   render() {
     const { classes } = this.props;
+    const sound = new Audio(this.url);
     return (
       <div>
-        <LinearProgress variant="determinate" value={this.state.completed} />
+        { !this.state.bsod?
+          <BsodScreen />
+          :
+          <LinearProgress variant="determinate" value={this.state.completed} />
+        }
       </div>
     );
   }
