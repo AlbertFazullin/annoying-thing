@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
 const Bsod = styled.section`
   position: fixed;
@@ -13,12 +14,24 @@ const Bsod = styled.section`
   font-family: 'Inconsolata', monospace;
 `;
 
+const InvisibleButton = styled.button`
+    color: red;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    
+`;
+
 class BsodScreen extends Component {
   componentDidMount() {
     const sound = new Audio("https://www.myinstants.com/media/sounds/erro.mp3");
     sound.play();
   }
-  
+
+
   render() {
     return (
       <Bsod>
@@ -31,6 +44,9 @@ class BsodScreen extends Component {
         <p>(New BSOD)</p>
         <p>:( Your PC ran into a problem and needs to restart. We're just collecting some error info, and then we'll restart for you. (45% complete)</p>
         <p>You can search for the error online: HAL_INITALIZATION_FAILED</p>
+        <Link to = '/anime'>
+            <InvisibleButton> BUTTON </InvisibleButton>
+        </Link>
       </Bsod>
     );
   }
