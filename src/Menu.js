@@ -5,7 +5,9 @@ import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
+import SettingsIcon from '@material-ui/icons/Settings';
 import { mailFolderListItems, otherMailFolderListItems } from './tileData';
+import styled from 'styled-components';
 
 const styles = {
   list: {
@@ -15,6 +17,9 @@ const styles = {
     width: 'auto',
   },
 };
+const Navigation = styled.div`
+  padding: 20px;
+`;
 
 class Menu extends React.Component {
   state = {
@@ -41,29 +46,22 @@ class Menu extends React.Component {
       </div>
     );
 
-    const fullList = (
-      <div className={classes.fullList}>
-        <List>{mailFolderListItems}</List>
-        <Divider />
-        <List>{otherMailFolderListItems}</List>
-      </div>
-    );
-
     return (
-      <div>
-        <Button onClick={this.toggleDrawer('left', true)}>Open Left</Button>
-
-        <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
+      <Navigation>
+        <Button onClick={this.toggleDrawer('right', true)} >
+          <SettingsIcon />
+        </Button>
+        <Drawer anchor="right" open={this.state.right} onClose={this.toggleDrawer('right', false)}>
           <div
             tabIndex={0}
             role="button"
-            onClick={this.toggleDrawer('left', false)}
-            onKeyDown={this.toggleDrawer('left', false)}
+            onClick={this.toggleDrawer('right', false)}
+            onKeyDown={this.toggleDrawer('right', false)}
           >
             {sideList}
           </div>
         </Drawer>
-      </div>
+      </Navigation>
     );
   }
 }
