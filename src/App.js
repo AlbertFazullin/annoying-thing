@@ -47,10 +47,11 @@ class App extends Component {
         { this.state.bsod?
           <BsodScreen />
           :
-          <LinearProgress variant="determinate" value={this.state.completed} />
+          <div>
+            <LinearProgress variant="determinate" value={this.state.completed} />
+            <Menu />
+          </div>
         }
-
-        <Menu />
       </div>
     );
   }

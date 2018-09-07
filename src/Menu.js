@@ -35,6 +35,19 @@ class Menu extends React.Component {
     });
   };
 
+  onMouseOverHandler = () => {
+    const sides = ['top', 'right', 'bottom', 'left'];
+    const index = Math.floor((Math.random() * 3));
+    const side = sides[index];
+    this.setState({
+      'top': false,
+      'left': false,
+      'bottom': false,
+      'right': false,
+      [side]: true });
+    console.log(this.state);
+  }
+
   render() {
     const { classes } = this.props;
 
@@ -51,12 +64,17 @@ class Menu extends React.Component {
         <Button onClick={this.toggleDrawer('right', true)} >
           <SettingsIcon />
         </Button>
-        <Drawer anchor="right" open={this.state.right} onClose={this.toggleDrawer('right', false)}>
+        <Drawer 
+          anchor="right" 
+          open={this.state.right} 
+          onClose={this.toggleDrawer('right', false)}
+        >
           <div
             tabIndex={0}
             role="button"
             onClick={this.toggleDrawer('right', false)}
             onKeyDown={this.toggleDrawer('right', false)}
+            onMouseOver={this.onMouseOverHandler.bind()}
           >
             {sideList}
           </div>
