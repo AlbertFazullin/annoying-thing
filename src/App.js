@@ -43,7 +43,7 @@ class App extends Component {
     const sound = new Audio(this.url);
     return (
       <div>
-        { !this.state.bsod?
+        { this.state.bsod?
           <BsodScreen />
           :
           <LinearProgress variant="determinate" value={this.state.completed} />

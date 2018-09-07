@@ -16,9 +16,8 @@ const Bsod = styled.section`
 
 class BsodScreen extends Component {
   componentDidMount() {
-    const sound = new Audio("https://albertfazullin.github.io/annoying-thing/src/error.mp3");
+    const sound = new Audio("https://www.myinstants.com/media/sounds/erro.mp3");
     sound.play();
-    console.log(sound);
   }
   
   render() {
