@@ -4,7 +4,7 @@ import Loading from './Loading';
 import Anime from './Anime';
 
 const App = () => (
-    <Router>
+    <Router basename="/annoying-thing">
         <div>
             <Route exact path="/" component={Loading} />
             <Route path="/anime" component={Anime} />
