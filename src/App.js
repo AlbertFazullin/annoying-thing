@@ -3,7 +3,8 @@ import './App.css';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import BsodScreen from './bsodScreen'
+import BsodScreen from './BsodScreen'
+import Menu from './Menu'
 
 const styles = {
   root: {
@@ -48,6 +49,8 @@ class App extends Component {
           :
           <LinearProgress variant="determinate" value={this.state.completed} />
         }
+
+        <Menu />
       </div>
     );
   }
