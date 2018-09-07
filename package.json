@@ -7,7 +7,7 @@
     "react-dom": "^16.5.0",
     "react-scripts": "1.1.5"
   },
-  "homepage": "http://username.github.io/myapp",
+  "homepage": "https://albertfazullin.github.io/annoying-thing/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
